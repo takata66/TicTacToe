@@ -2,13 +2,11 @@ import java.util.Scanner;
 
 public class Players {
     private String name;
-    private int command;
+    private int command = -1;
     private int id;
     Scanner sc = new Scanner(System.in);
 
-    public Players(int id) {
-        this.id = id;
-    }
+    public Players(int id) { this.id = id; }
 
     public void setName(int id) {
         System.out.print("Игрок " + id + " , введите ваше имя: ");
@@ -17,8 +15,10 @@ public class Players {
 
     public void setCommand(int id, int previousCommand) {
         if (id == 1) {
-            System.out.print("Игрок " + id + " , выберите комманду Крестики(1), Нолики(0): ");
-            command = sc.nextInt();
+            while(command != 0 && command != 1) {
+                System.out.print("Игрок " + id + " , выберите комманду Крестики(1), Нолики(0): ");
+                command = sc.nextInt();
+            }
         } else {
             command = (previousCommand == 1) ? 0 : 1;
         }
